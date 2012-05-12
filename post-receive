@@ -40,13 +40,13 @@ while read old_sha1 new_sha1 refname; do
                 then
                         # this is actuall a sync coming in!! - well its actuall already here
                         # check master points to $old_sha1 - if it does...move it to $new_sha1
-                        $master_current=`git show-ref master -s`
+                        master_current=`git show-ref master -s`
                         if [ "${master_current}" = "$old_sha1" ]
                         then
                                 echo "Updating master"
                                 git update-ref refs/heads/master $new_sha1 $old_sha1
                         else
-                                print "WTF?!! - the mirrors are out of sync"
+                                echo "WTF?!! - the mirrors are out of sync - master: ${master_current}"
                         fi
                         
                         retcode=0;
