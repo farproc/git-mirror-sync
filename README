@@ -1,0 +1,16 @@
+
+Start with three cloned (identical) repos
+
+Going to enfore --no-ff using the pre-receive hook
+should also make clients use the "branch.<name>.mergeoptions = --no-ff" too
+
+But thats also the hook which we're going to gain the remote locks from all
+the other servers.
+
+pre-receive
+
+# try 3 times and sleep 2 seconds between attempts
+lockfile -r3 -2 push.lock
+
+# to unlock
+rm -f push.lock 

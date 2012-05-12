@@ -1,0 +1,29 @@
+#!/bin/bash
+
+source config
+
+while read old_sha1 new_sha1 refname; do
+        echo "-----post-----";
+        echo "ns : " $new_sha1;
+        echo "os : " $old_sha1;
+        echo "ref: " $refname;
+        echo "----"
+
+        # if $USER == "apache/www-data" && $REMOTE_USER == "sync-account"
+                # this was a sync - we're all done now
+        # else
+                # push to all the other mirrors (remotes)
+                # git push orgA master:master
+                # git push orgB master:master
+                # git push orgC master:master
+
+                # if /tmp/push.lock exits and /tmp/allowed_commit contains $new_sha1
+                        # rm -f /tmp/push.lock
+
+#git ls-tree -r $new_sha1 | cut -f 3 -d ' ' | cut -f 1 | while read file; do
+#git cat-file blob $file
+#done; 
+done
+
+# might was well return 0 - doesn't really make a difference
+exit 0

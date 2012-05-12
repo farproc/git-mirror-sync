@@ -1,0 +1,6 @@
+# config settings
+LOCK_ORG="orgA orgB orgC"
+WHO_AM_I="orgA"
+LFILE="/tmp/git-${WHO_AMM_I}.lock"
+SYNC_BRANCH="sync"
+

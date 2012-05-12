@@ -1,0 +1,53 @@
+#!/bin/bash
+
+source config
+
+while read old_sha1 new_sha1 refname; do
+        echo "-----pre-----";
+        echo "ns : " $new_sha1;
+        echo "os : " $old_sha1;
+        echo "ref: " $refname;
+        echo "----"
+
+# method one
+        # instead of the $USER tricks below (which seem hack'ish)
+        # we could use a special "sync" branch (via the $refname) - which
+        # would only exist on the sync machines - which we'd 'merge --ff'
+
+        if [ "$refname" = "refs/heads/master" ]
+                # accuire locks on all remote repos
+        then
+        else
+                if [ "$refname" = "refs/heads/sync" ]
+                then
+                        # this is actuall a sync coming in!! - leave it alone
+                        # and let it pass
+                        exit 0;
+                fi
+        fi
+
+
+
+
+# method two
+        # if $USER == "apache/www-data" && $REMOTE_USER == "sync-account"
+                # you don't need the lock!
+                # exit 0
+        # else if its anyone else 
+                # accuire remote lock in set order (same on every site!) including this site!
+                # on remote sides 
+                        # lockfile -r3 -2 /tmp/push.lock
+                        # echo $new_sha1 > /tmp/allowed_commit
+                # assuming locks were granted
+                        # exit 0
+                # else
+                        # exit 1 
+
+#git ls-tree -r $new_sha1 | cut -f 3 -d ' ' | cut -f 1 | while read file; do
+#git cat-file blob $file
+#done; 
+#echo "----"
+
+done
+
+exit 1
