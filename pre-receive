@@ -19,8 +19,9 @@ while read old_sha1 new_sha1 refname; do
                 # accuire locks on all remote repos
                 for l in $LOCK_ORG
                 do
-                        echo "Acquire lock ${l}"
-                        echo "   Adding ${new_sha1} to accept list"
+                        # not currently implemented
+                        # echo "Acquire lock ${l}"
+                        # echo "   Adding ${new_sha1} to accept list"
                 done
 
                 retcode=0;
@@ -28,8 +29,8 @@ while read old_sha1 new_sha1 refname; do
                 if [ "$refname" = "refs/heads/sync" ]
                 then
                         # this is actuall a sync coming in!!
-                        echo "Check we're locked..."
-                        echo "Check ${new_sha1} is in the accept list"
+                        # echo "Check we're locked..."
+                        # echo "Check ${new_sha1} is in the accept list"
                         
                         retcode=0;
                 else
