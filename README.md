@@ -9,6 +9,7 @@ Imagin you have three teams around the world all working on the same project. Fo
 
 So the hooks within this repos allow you to do this:
 
+```
 ----------                                      ----------
 | Team A | <----------------------------------> | Team B |
 ----------                                      ----------
@@ -20,11 +21,12 @@ So the hooks within this repos allow you to do this:
                        ----------
                        | Team C |
                        ----------
+```
 
 AND when anyone commits/merges/pushes to master on any of the "local repos" they automattically push the changes to the other "local repos". This could still give raise to merge conflicts though - so before the commit is even accepted locally (at the orginating "local repo") - its locks the other repos to prevent a simultaneous commit breaking everything!
 
 ## How to use
-Have a look in ''setup_test.sh'' - it setups up three repos (like the diagram above) and then commits to one of them and checks it made it across. TBH its pretty simple if you're familiar with git.
+Have a look in ''setup\_test.sh'' - it setups up three repos (like the diagram above) and then commits to one of them and checks it made it across. TBH its pretty simple if you're familiar with git.
 
 ## Important
 __Nobody__ should manually push changes directly into the sync branch - its very important master and sync stay in lock-step.
