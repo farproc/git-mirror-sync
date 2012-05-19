@@ -22,6 +22,7 @@ while read old_sha1 new_sha1 refname; do
                         # not currently implemented
                         # echo "Acquire lock ${l}"
                         # echo "   Adding ${new_sha1} to accept list"
+                        echo "Locking isn't currently implemented"
                 done
 
                 retcode=0;
