@@ -5,11 +5,11 @@ source ./hooks/config
 retcode=1;
 
 while read old_sha1 new_sha1 refname; do
-        echo "-----pre (${WHO_AM_I}) -----";
-        echo "ns : " $new_sha1;
-        echo "os : " $old_sha1;
-        echo "ref: " $refname;
-        echo "----"
+        # echo "-----pre (${WHO_AM_I}) -----";
+        # echo "ns : " $new_sha1;
+        # echo "os : " $old_sha1;
+        # echo "ref: " $refname;
+        # echo "----"
 
         # use a special "sync" branch (via the $refname) - which
         # would only exist on the sync machines - which we'd 'merge --ff'

@@ -3,11 +3,11 @@
 source ./hooks/config
 retcode=1
 while read old_sha1 new_sha1 refname; do
-        echo "-----post (${WHO_AM_I}) -----";
-        echo "ns : " $new_sha1;
-        echo "os : " $old_sha1;
-        echo "ref: " $refname;
-        echo "----"
+        #echo "-----post (${WHO_AM_I}) -----";
+        #echo "ns : " $new_sha1;
+        #echo "os : " $old_sha1;
+        #echo "ref: " $refname;
+        #echo "----"
 
         # use a special "sync" branch (via the $refname) - which
         # would only exist on the sync machines - which we'd 'merge --ff'
@@ -20,20 +20,20 @@ while read old_sha1 new_sha1 refname; do
                         if [ "$r" = "$WHO_AM_I" ]
                         then
                                 # no need to push - but update sync
-                                echo "Updating local sync branch"
+                                # echo "Updating local sync branch"
                                 git update-ref refs/heads/sync $new_sha1 $old_sha1
                         else
-                                echo "Pushing to ${r}"
+                                # echo "Pushing to ${r}"
                                 git push $r master:sync
                         fi
                 done
                 
                 # release locks on all remote repos
-                for l in $LOCK_ORG
-                do
-                        echo "Removing ${new_sha1} from accept list"
-                        echo "Release lock ${l}"
-                done
+                # for l in $LOCK_ORG
+                # do
+                        # echo "Removing ${new_sha1} from accept list"
+                        # echo "Release lock ${l}"
+                # done
                 retcode=0;
         else
                 if [ "$refname" = "refs/heads/sync" ]
@@ -43,10 +43,10 @@ while read old_sha1 new_sha1 refname; do
                         master_current=`git show-ref master -s`
                         if [ "${master_current}" = "$old_sha1" ]
                         then
-                                echo "Updating master"
+                                # echo "Updating master"
                                 git update-ref refs/heads/master $new_sha1 $old_sha1
                         else
-                                echo "WTF?!! - the mirrors are out of sync - master: ${master_current}"
+                                echo "the mirrors are out of sync - master: ${master_current}"
                         fi
                         
                         retcode=0;
